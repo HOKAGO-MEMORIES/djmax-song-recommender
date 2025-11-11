@@ -1,9 +1,11 @@
 package com.hokago_memories.domain.song;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public record PatternButton(
-        PatternDifficulty NM,
-        PatternDifficulty HD,
-        PatternDifficulty MX,
-        PatternDifficulty SC
+        @JsonProperty("NM") PatternDifficulty NM,
+        @JsonProperty("HD") PatternDifficulty HD,
+        @JsonProperty("MX") PatternDifficulty MX,
+        @JsonProperty("SC") PatternDifficulty SC
 ) {
 }
