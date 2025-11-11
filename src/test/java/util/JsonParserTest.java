@@ -2,8 +2,6 @@ package util;
 
 import com.hokago_memories.domain.song.Song;
 import com.hokago_memories.util.JsonParser;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +14,7 @@ public class JsonParserTest {
 
     @BeforeEach
     void setup() {
-        String jsonString = loadJson("sample_songs.json");
+        String jsonString = TestDataLoader.loadJson("sample_songs.json");
         this.songs = JsonParser.parseSongs(jsonString);
     }
 
@@ -36,14 +34,5 @@ public class JsonParserTest {
         Assertions.assertThat(songs.getLast().patterns().b4().HD().level()).isEqualTo(6);
         Assertions.assertThat(songs.getLast().patterns().b6().SC().floor()).isEqualTo(4.1);
         Assertions.assertThat(songs.getLast().patterns().b8().NM().floor()).isNull();
-    }
-
-    private String loadJson(String fileName) {
-        try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
-            return new String(is.readAllBytes(), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

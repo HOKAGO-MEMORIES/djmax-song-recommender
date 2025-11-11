@@ -2,14 +2,13 @@ package repository;
 
 import com.hokago_memories.domain.song.Song;
 import com.hokago_memories.util.JsonParser;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.TestDataLoader;
 
 public class JpaSongRepositoryTest {
 
@@ -20,7 +19,7 @@ public class JpaSongRepositoryTest {
     void setup() {
         // 이곳에서 DB 초기화
 
-        String jsonString = loadJson("sample_songs.json");
+        String jsonString = TestDataLoader.loadJson("sample_songs.json");
         this.sampleSongs = JsonParser.parseSongs(jsonString);
     }
 
@@ -37,12 +36,4 @@ public class JpaSongRepositoryTest {
         Assertions.assertThat(foundSong.get().name()).isEqualTo(songToSave.name());
     }
 
-    private String loadJson(String fileName) {
-        try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
-            return new String(is.readAllBytes(), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
