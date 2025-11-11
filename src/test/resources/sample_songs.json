@@ -1,0 +1,492 @@
+[
+  {
+    "title": 0,
+    "name": "비상 ~Stay With Me~",
+    "composer": "Mycin.T",
+    "dlcCode": "R",
+    "dlc": "RESPECT",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 8
+        },
+        "NM": {
+          "level": 4
+        },
+        "SC": {
+          "level": 5,
+          "floor": 5.3,
+          "rating": 159
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 10,
+          "floor": 2.2,
+          "rating": 148
+        },
+        "NM": {
+          "level": 7
+        },
+        "SC": {
+          "level": 7,
+          "floor": 7.2,
+          "rating": 164
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 10
+        },
+        "MX": {
+          "level": 11
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 8,
+          "floor": 7.3,
+          "rating": 165
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 11,
+          "floor": 5.3,
+          "rating": 159
+        },
+        "NM": {
+          "level": 7
+        },
+        "SC": {
+          "level": 8,
+          "floor": 9.2,
+          "rating": 172
+        }
+      }
+    }
+  },
+  {
+    "title": 1,
+    "name": "2Nite",
+    "composer": "ND Lee",
+    "dlcCode": "R",
+    "dlc": "RESPECT",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 6
+        },
+        "NM": {
+          "level": 3
+        },
+        "SC": {
+          "level": 1,
+          "floor": 1.2,
+          "rating": 142
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 9
+        },
+        "NM": {
+          "level": 4
+        },
+        "SC": {
+          "level": 4,
+          "floor": 4.2,
+          "rating": 155
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 8
+        },
+        "NM": {
+          "level": 3
+        },
+        "SC": {
+          "level": 4,
+          "floor": 4.1,
+          "rating": 154
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 8,
+          "floor": 1.1,
+          "rating": 140
+        },
+        "NM": {
+          "level": 4
+        },
+        "SC": {
+          "level": 6,
+          "floor": 6.2,
+          "rating": 161
+        }
+      }
+    }
+  },
+  {
+    "title": 2,
+    "name": "Alone",
+    "composer": "Marshmello",
+    "dlcCode": "RV",
+    "dlc": "RESPECT/V",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 9
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 5,
+          "floor": 5.3,
+          "rating": 159
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 8
+        },
+        "NM": {
+          "level": 4
+        },
+        "SC": {
+          "level": 5,
+          "floor": 5.3,
+          "rating": 159
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 8
+        },
+        "MX": {
+          "level": 12,
+          "floor": 1.2,
+          "rating": 142
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 6,
+          "floor": 6.2,
+          "rating": 161
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 8
+        },
+        "MX": {
+          "level": 12,
+          "floor": 3.1,
+          "rating": 151
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 7,
+          "floor": 7.2,
+          "rating": 164
+        }
+      }
+    }
+  },
+  {
+    "title": 3,
+    "name": "Always",
+    "composer": "YUGI / Mool",
+    "dlcCode": "R",
+    "dlc": "RESPECT",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 7
+        },
+        "NM": {
+          "level": 4
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 9
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 6,
+          "floor": 6.2,
+          "rating": 161
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 10
+        },
+        "NM": {
+          "level": 5
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 10,
+          "floor": 1.2,
+          "rating": 142
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 7,
+          "floor": 8.2,
+          "rating": 167
+        }
+      }
+    }
+  },
+  {
+    "title": 747,
+    "name": "ultradiaxon-N3",
+    "composer": "nitro (lowiro)",
+    "dlcCode": "ARC",
+    "dlc": "ARCAEA",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 10
+        },
+        "MX": {
+          "level": 15,
+          "floor": 8.2,
+          "rating": 167
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 10,
+          "floor": 10.3,
+          "rating": 180
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 10
+        },
+        "MX": {
+          "level": 14,
+          "floor": 7.2,
+          "rating": 164
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.1,
+          "rating": 182
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 9
+        },
+        "MX": {
+          "level": 13,
+          "floor": 4.2,
+          "rating": 155
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.3,
+          "rating": 186
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 11
+        },
+        "MX": {
+          "level": 14,
+          "floor": 7.2,
+          "rating": 164
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 12,
+          "floor": 12.1,
+          "rating": 187
+        }
+      }
+    }
+  },
+  {
+    "title": 748,
+    "name": "Gate of Elysium",
+    "composer": "kanone",
+    "dlcCode": "CP",
+    "dlc": "CLEAR PASS",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 8
+        },
+        "MX": {
+          "level": 14,
+          "floor": 6.3,
+          "rating": 162
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.2,
+          "rating": 184
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 9
+        },
+        "MX": {
+          "level": 14,
+          "floor": 5.1,
+          "rating": 157
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.2,
+          "rating": 184
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 9
+        },
+        "MX": {
+          "level": 14,
+          "floor": 5.1,
+          "rating": 157
+        },
+        "NM": {
+          "level": 6
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.1,
+          "rating": 182
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 9
+        },
+        "MX": {
+          "level": 14,
+          "floor": 8.1,
+          "rating": 166
+        },
+        "NM": {
+          "level": 5
+        },
+        "SC": {
+          "level": 11,
+          "floor": 11.3,
+          "rating": 186
+        }
+      }
+    }
+  },
+  {
+    "title": 749,
+    "name": "AURORA",
+    "composer": "DIEIN",
+    "dlcCode": "CP",
+    "dlc": "CLEAR PASS",
+    "patterns": {
+      "4B": {
+        "HD": {
+          "level": 6
+        },
+        "MX": {
+          "level": 9
+        },
+        "NM": {
+          "level": 2
+        },
+        "SC": {
+          "level": 4,
+          "floor": 4.2,
+          "rating": 155
+        }
+      },
+      "5B": {
+        "HD": {
+          "level": 6
+        },
+        "MX": {
+          "level": 10
+        },
+        "NM": {
+          "level": 3
+        },
+        "SC": {
+          "level": 5,
+          "floor": 3.1,
+          "rating": 151
+        }
+      },
+      "6B": {
+        "HD": {
+          "level": 6
+        },
+        "MX": {
+          "level": 9
+        },
+        "NM": {
+          "level": 3
+        },
+        "SC": {
+          "level": 5,
+          "floor": 4.1,
+          "rating": 154
+        }
+      },
+      "8B": {
+        "HD": {
+          "level": 6
+        },
+        "MX": {
+          "level": 11
+        },
+        "NM": {
+          "level": 3
+        },
+        "SC": {
+          "level": 6,
+          "floor": 5.2,
+          "rating": 158
+        }
+      }
+    }
+  }
+]
