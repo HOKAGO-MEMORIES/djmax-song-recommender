@@ -1,11 +1,14 @@
 package com.hokago_memories.domain.song;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 
+@Embeddable
 public record PatternButton(
-        @JsonProperty("NM") PatternDifficulty NM,
-        @JsonProperty("HD") PatternDifficulty HD,
-        @JsonProperty("MX") PatternDifficulty MX,
-        @JsonProperty("SC") PatternDifficulty SC
+        @Embedded @JsonProperty("NM") PatternDifficulty NM,
+        @Embedded @JsonProperty("HD") PatternDifficulty HD,
+        @Embedded @JsonProperty("MX") PatternDifficulty MX,
+        @Embedded @JsonProperty("SC") PatternDifficulty SC
 ) {
 }
