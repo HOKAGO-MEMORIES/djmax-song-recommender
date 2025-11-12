@@ -1,7 +1,11 @@
 package repository;
 
 import com.hokago_memories.domain.song.Song;
+import com.hokago_memories.repository.impl.JpaSongRepository;
 import com.hokago_memories.util.JsonParser;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 import org.assertj.core.api.Assertions;
@@ -12,12 +16,16 @@ import util.TestDataLoader;
 
 public class JpaSongRepositoryTest {
 
+    private EntityManager em;
     private JpaSongRepository repository;
     private List<Song> sampleSongs;
 
     @BeforeEach
     void setup() {
-        // 이곳에서 DB 초기화
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("test-db-unit");
+        em = emf.createEntityManager();
+        repository = new JpaSongRepository(em);
+        repository.clear();
 
         String jsonString = TestDataLoader.loadJson("sample_songs.json");
         this.sampleSongs = JsonParser.parseSongs(jsonString);
