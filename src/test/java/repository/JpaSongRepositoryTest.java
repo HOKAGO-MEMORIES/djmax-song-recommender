@@ -32,8 +32,8 @@ public class JpaSongRepositoryTest {
     }
 
     @Test
-    @DisplayName("Song 객체를 저장하고, findById로 조회할 수 있다.")
-    void saveAndFindById() {
+    @DisplayName("Song 객체를 저장하고, findByTitle로 조회할 수 있다.")
+    void saveAndFindByTitle() {
         Song songToSave = sampleSongs.getFirst();
 
         repository.save(songToSave);
@@ -42,6 +42,7 @@ public class JpaSongRepositoryTest {
 
         Assertions.assertThat(foundSong).isPresent();
         Assertions.assertThat(foundSong.get().name()).isEqualTo(songToSave.name());
+        Assertions.assertThat(foundSong.get().patterns().b6().SC().rating()).isEqualTo(165);
+        Assertions.assertThat(foundSong.get().patterns().b8().NM().floor()).isNull();
     }
-
 }
