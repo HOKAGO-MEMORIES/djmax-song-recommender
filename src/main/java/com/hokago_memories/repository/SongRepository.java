@@ -12,7 +12,7 @@ public interface SongRepository {
 
     List<Song> findAll();
 
-    Optional<Song> finaByTitle(int title);
+    Optional<Song> findByTitle(int title);
 
     void clear();
 }
