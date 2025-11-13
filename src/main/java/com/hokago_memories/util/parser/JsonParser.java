@@ -1,4 +1,4 @@
-package com.hokago_memories.util;
+package com.hokago_memories.util.parser;
 
 import com.hokago_memories.domain.song.Song;
 import java.util.List;
