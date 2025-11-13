@@ -1,4 +1,4 @@
-package com.hokago_memories.view;
+package com.hokago_memories.view.input;
 
 import com.hokago_memories.exception.ErrorMessage;
 import com.hokago_memories.util.Splitter;
