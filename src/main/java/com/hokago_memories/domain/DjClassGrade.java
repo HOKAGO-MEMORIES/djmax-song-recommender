@@ -1,0 +1,74 @@
+package com.hokago_memories.domain;
+
+public enum DjClassGrade {
+
+    THE_LORD_OF_DJMAX("THE LORD OF DJMAX", 9980),
+    BEAT_MAESTRO_I("BEAT MAESTRO I", 9970),
+    BEAT_MAESTRO_II("BEAT MAESTRO II", 9950),
+    BEAT_MAESTRO_III("BEAT MAESTRO III", 9930),
+    BEAT_MAESTRO_IV("BEAT MAESTRO IV", 9900),
+    SHOWSTOPPER_I("SHOWSTOPPER I", 9850),
+    SHOWSTOPPER_II("SHOWSTOPPER II", 9800),
+    SHOWSTOPPER_III("SHOWSTOPPER III", 9750),
+    SHOWSTOPPER_IV("SHOWSTOPPER IV", 9700),
+    HEADLINER_I("HEADLINER I", 9650),
+    HEADLINER_II("HEADLINER II", 9600),
+    HEADLINER_III("HEADLINER III", 9500),
+    HEADLINER_IV("HEADLINER IV", 9400),
+    TREND_SETTER_I("TREND SETTER I", 9300),
+    TREND_SETTER_II("TREND SETTER II", 9200),
+    TREND_SETTER_III("TREND SETTER III", 9100),
+    TREND_SETTER_IV("TREND SETTER IV", 9000),
+    PROFESSIONAL_I("PROFESSIONAL I", 8900),
+    PROFESSIONAL_II("PROFESSIONAL II", 8800),
+    PROFESSIONAL_III("PROFESSIONAL III", 8700),
+    PROFESSIONAL_IV("PROFESSIONAL IV", 8600),
+    HIGH_CLASS_I("HIGH CLASS I", 8400),
+    HIGH_CLASS_II("HIGH CLASS II", 8200),
+    HIGH_CLASS_III("HIGH CLASS III", 8000),
+    HIGH_CLASS_IV("HIGH CLASS IV", 7800),
+    PRO_DJ_I("PRO DJ I", 7600),
+    PRO_DJ_II("PRO DJ II", 7400),
+    PRO_DJ_III("PRO DJ III", 7200),
+    PRO_DJ_IV("PRO DJ IV", 7000),
+    MIDDLEMAN_I("MIDDLEMAN I", 6800),
+    MIDDLEMAN_II("MIDDLEMAN II", 6600),
+    MIDDLEMAN_III("MIDDLEMAN III", 6400),
+    MIDDLEMAN_IV("MIDDLEMAN IV", 6200),
+    STREET_DJ_I("STREET DJ I", 6000),
+    STREET_DJ_II("STREET DJ II", 5800),
+    STREET_DJ_III("STREET DJ III", 5500),
+    STREET_DJ_IV("STREET DJ IV", 5200),
+    ROOKIE_I("ROOKIE I", 4900),
+    ROOKIE_II("ROOKIE II", 4600),
+    ROOKIE_III("ROOKIE III", 4300),
+    ROOKIE_IV("ROOKIE IV", 4000),
+    AMATEUR_I("AMATEUR I", 3600),
+    AMATEUR_II("AMATEUR II", 3200),
+    AMATEUR_III("AMATEUR III", 2800),
+    AMATEUR_IV("AMATEUR IV", 2400),
+    TRAINEE_I("TRAINEE I", 2000),
+    TRAINEE_II("TRAINEE II", 1500),
+    TRAINEE_III("TRAINEE III", 1000),
+    TRAINEE_IV("TRAINEE IV", 500),
+    BEGINNER("BEGINNER", 0);
+
+
+    private final String displayName;
+    private final int threshold;
+
+    DjClassGrade(String displayName, int threshold) {
+        this.displayName = displayName;
+        this.threshold = threshold;
+    }
+
+    public static DjClassGrade findGrade(double score) {
+        for (DjClassGrade grade : values()) {
+            if (score >= grade.threshold) {
+                return grade;
+            }
+        }
+
+        return BEGINNER;
+    }
+}
