@@ -2,6 +2,7 @@ package service;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.PlayRecordDto;
+import com.hokago_memories.domain.TheoreticalMax;
 import com.hokago_memories.service.DjClassCalculator;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -15,7 +16,7 @@ public class DjClassCalculatorTest {
 
     @BeforeEach
     void setup() {
-        double theoreticalMax = 8000.0;
+        TheoreticalMax theoreticalMax = new TheoreticalMax(8000.0, 0.0, 0.0, 0.0);
         this.calculator = new DjClassCalculator(theoreticalMax);
     }
 
@@ -28,7 +29,7 @@ public class DjClassCalculatorTest {
                 new PlayRecordDto(738, "Fracture Ray", "Sakuzyo", "ARCAEA", "ARC", "MX", 5.3, 99.41, 62.2297, 143.192)
         );
 
-        DjClass result = calculator.calculate(records);
+        DjClass result = calculator.calculate(records, 4);
 
         Assertions.assertThat(result.basicSum()).isEqualTo(118.4503);
         Assertions.assertThat(result.newSum()).isEqualTo(62.2297);
