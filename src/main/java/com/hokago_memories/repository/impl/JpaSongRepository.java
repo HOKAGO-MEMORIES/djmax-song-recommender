@@ -56,6 +56,12 @@ public class JpaSongRepository implements SongRepository {
     }
 
     @Override
+    public long count() {
+        return em.createQuery("SELECT COUNT(s) FROM Song s", Long.class)
+                .getSingleResult();
+    }
+
+    @Override
     public void clear() {
         EntityTransaction transaction = em.getTransaction();
         try {

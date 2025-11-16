@@ -48,6 +48,11 @@ public class StubSongRepository implements SongRepository {
     }
 
     @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
     public void clear() {
 
     }

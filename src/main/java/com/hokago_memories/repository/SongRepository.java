@@ -14,5 +14,7 @@ public interface SongRepository {
 
     Optional<Song> findByTitle(int title);
 
+    long count();
+
     void clear();
 }
