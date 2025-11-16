@@ -1,5 +1,6 @@
 package service;
 
+import com.hokago_memories.domain.TheoreticalMax;
 import com.hokago_memories.repository.SongRepository;
 import com.hokago_memories.service.DjPowerRules;
 import com.hokago_memories.service.TheoreticalMaxCalculator;
@@ -27,8 +28,12 @@ public class TheoreticalMaxCalculatorTest {
         // 15(99.99), 14(95.55) (NEW)
         // 15(99.99), 15(99.99) (BASIC)
         double expectedTheoreticalMax = 395.52;
-        double actualTheoreticalMax = calculator.calculate();
+        TheoreticalMax theoreticalMax = calculator.calculateAll();
+        double actualTheoreticalMax = theoreticalMax.b4();
 
         Assertions.assertThat(actualTheoreticalMax).isEqualTo(expectedTheoreticalMax);
+        Assertions.assertThat(theoreticalMax.b5()).isEqualTo(0.0);
+        Assertions.assertThat(theoreticalMax.b6()).isEqualTo(0.0);
+        Assertions.assertThat(theoreticalMax.b8()).isEqualTo(0.0);
     }
 }

@@ -6,6 +6,9 @@ import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Embeddable
 public record Patterns(
@@ -78,4 +81,10 @@ public record Patterns(
         @Embedded
         @JsonProperty("8B") PatternButton b8
 ) {
+
+    public List<PatternButton> getAllButtons() {
+        return Stream.of(b4, b5, b6, b8)
+                .filter(Objects::nonNull)
+                .toList();
+    }
 }
