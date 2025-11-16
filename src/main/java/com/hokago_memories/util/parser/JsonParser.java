@@ -22,4 +22,12 @@ public class JsonParser {
             throw new RuntimeException("JSON 파싱 실패", e);
         }
     }
+
+    public static <T> T parse(String jsonString, Class<T> clazz) {
+        try {
+            return objectMapper.readValue(jsonString, clazz);
+        } catch (Exception e) {
+            throw new RuntimeException("JSON 파싱 실패 (" + clazz.getSimpleName() + "): " + e.getMessage(), e);
+        }
+    }
 }

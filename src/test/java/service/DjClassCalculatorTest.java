@@ -24,10 +24,9 @@ public class DjClassCalculatorTest {
     @Test
     void calculate_with_sampleList() {
         List<PlayRecordDto> records = List.of(
-                new PlayRecordDto(179, "Lisrim", "onoken", "VE", "V EXTENSION", "MX", 2, 2.1, 99.34, 57.6108, 133.739),
-                new PlayRecordDto(631, "Diomedes", "XeoN", "VL", "V LIBERTY", "HD", 5, 5.3, 99.10, 60.8395, 139.546),
-                new PlayRecordDto(738, "Fracture Ray", "Sakuzyo", "ARCAEA", "ARC", "MX", 5, 5.3, 99.41, 62.2297,
-                        143.192)
+                new PlayRecordDto(179, "VE", "MX", 57.6108),
+                new PlayRecordDto(631, "VL", "HD", 60.8395),
+                new PlayRecordDto(738, "ARC", "MX", 62.2297)
         );
 
         DjClass result = calculator.calculate(records, 4);
