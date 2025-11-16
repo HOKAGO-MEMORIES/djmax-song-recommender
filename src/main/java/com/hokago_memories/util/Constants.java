@@ -6,5 +6,5 @@ public final class Constants {
     public static final int NEW_CATEGORY_TITLE = 687;
 
     // 클리어패스 대상곡
-    public static final String CLEAR_PASS = "cp";
+    public static final String CLEAR_PASS = "CP";
 }

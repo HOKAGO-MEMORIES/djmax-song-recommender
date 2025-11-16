@@ -10,7 +10,7 @@ public class StubOpenApiService implements OpenApiService {
     @Override
     public Tier findTier(String nickname, int button) {
         if (nickname.equals("UserNotFound")) {
-            throw new IllegalArgumentException("실패 - 닉네임 찾자 못함 (errorCode: 101)");
+            throw new IllegalArgumentException("실패 - 닉네임 찾지 못함 (errorCode: 101)");
         }
 
         if (nickname.equals("ValidNickname") && button == 4) {

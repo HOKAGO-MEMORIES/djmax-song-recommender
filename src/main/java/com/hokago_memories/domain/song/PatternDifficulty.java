@@ -6,6 +6,6 @@ import jakarta.persistence.Embeddable;
 public record PatternDifficulty(
         int level,
         Double floor,
-        Double rating
+        int rating
 ) {
 }
