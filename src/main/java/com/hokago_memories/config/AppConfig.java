@@ -12,7 +12,7 @@ import com.hokago_memories.service.TheoreticalMaxCalculator;
 import com.hokago_memories.service.impl.ProductionOpenApiService;
 import com.hokago_memories.util.NetworkClient;
 import com.hokago_memories.view.input.InputView;
-import com.hokago_memories.view.output.OutputVIew;
+import com.hokago_memories.view.output.OutputView;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -35,8 +35,8 @@ public class AppConfig {
         return new InputView();
     }
 
-    public OutputVIew outputVIew() {
-        return new OutputVIew();
+    public OutputView outputVIew() {
+        return new OutputView();
     }
 
     private OpenApiService openApiService() {

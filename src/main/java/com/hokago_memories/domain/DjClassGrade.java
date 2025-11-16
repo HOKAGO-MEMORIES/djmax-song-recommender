@@ -71,4 +71,8 @@ public enum DjClassGrade {
 
         return BEGINNER;
     }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 }
