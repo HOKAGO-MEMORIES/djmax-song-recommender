@@ -7,7 +7,8 @@ public record PlayRecordDto(
         String dlcCode,
         String dlc,
         String pattern,
-        double floorNumber,
+        int floorNumber,
+        double scFloor,
         double score,
         double djpower,
         double rating

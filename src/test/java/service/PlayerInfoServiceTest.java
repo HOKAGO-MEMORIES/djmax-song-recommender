@@ -1,6 +1,10 @@
 package service;
 
+import com.hokago_memories.domain.DjClass;
+import com.hokago_memories.domain.DjClassGrade;
+import com.hokago_memories.domain.TheoreticalMax;
 import com.hokago_memories.domain.UserRequest;
+import com.hokago_memories.service.DjClassCalculator;
 import com.hokago_memories.service.OpenApiService;
 import com.hokago_memories.service.PlayerInfoService;
 import org.assertj.core.api.Assertions;
@@ -15,7 +19,9 @@ public class PlayerInfoServiceTest {
     @BeforeEach
     void setup() {
         OpenApiService openApiService = new StubOpenApiService();
-        this.service = new PlayerInfoService(openApiService);
+        DjClassCalculator djClassCalculator = new DjClassCalculator(
+                new TheoreticalMax(10000.0, 10000.0, 10000.0, 10000.0));
+        this.service = new PlayerInfoService(openApiService, djClassCalculator);
     }
 
     @DisplayName("등록되어 있지 않은 닉네임을 입력하면 예외처리 한다.")
@@ -43,5 +49,17 @@ public class PlayerInfoServiceTest {
 
         Assertions.assertThat(service.getUserTier(request).tierName())
                 .isEqualTo("GOLD III");
+    }
+
+    @DisplayName("유효한 데이터를 바탕으로 DJCLASS를 계산해서 반환한다.")
+    @Test
+    void findDjClass() {
+        UserRequest request = new UserRequest("ValidNickname", 4);
+        DjClass djClass = service.getDjClass(request);
+
+        // 661.163
+        // 1040.7314
+        Assertions.assertThat(djClass.getDisplayScore()).isEqualTo("1701.89");
+        Assertions.assertThat(djClass.getGrade()).isEqualTo(DjClassGrade.findGrade(1701.89));
     }
 }
