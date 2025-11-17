@@ -18,4 +18,8 @@ public class OutputView {
                         djClass.getGrade().getDisplayName())
         );
     }
+
+    public void printError(String errorMessage) {
+        System.out.println(errorMessage);
+    }
 }
