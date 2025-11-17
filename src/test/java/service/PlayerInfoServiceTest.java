@@ -2,9 +2,9 @@ package service;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.DjClassGrade;
-import com.hokago_memories.domain.TheoreticalMax;
-import com.hokago_memories.domain.UserRequest;
-import com.hokago_memories.service.DjClassCalculator;
+import com.hokago_memories.domain.logic.DjClassCalculator;
+import com.hokago_memories.dto.TheoreticalMax;
+import com.hokago_memories.dto.UserRequest;
 import com.hokago_memories.service.OpenApiService;
 import com.hokago_memories.service.PlayerInfoService;
 import org.assertj.core.api.Assertions;

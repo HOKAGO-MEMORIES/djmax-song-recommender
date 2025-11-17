@@ -1,7 +1,8 @@
-package com.hokago_memories.util;
+package com.hokago_memories.domain.logic;
 
-import com.hokago_memories.domain.PlayRecordDto;
+import com.hokago_memories.config.Constants;
 import com.hokago_memories.domain.song.Song;
+import com.hokago_memories.dto.PlayRecordDto;
 
 public class SongClassifier {
 

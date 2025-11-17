@@ -1,6 +1,6 @@
-package com.hokago_memories.util;
+package com.hokago_memories.domain.logic;
 
-import com.hokago_memories.domain.TopRecords;
+import com.hokago_memories.dto.TopRecords;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;

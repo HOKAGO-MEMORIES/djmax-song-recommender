@@ -1,18 +1,18 @@
 package com.hokago_memories.service.impl;
 
-import com.hokago_memories.domain.PlayRecordDto;
+import com.hokago_memories.config.Constants;
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.domain.dto.BoardDto;
-import com.hokago_memories.domain.dto.FloorDto;
-import com.hokago_memories.domain.dto.PatternDto;
-import com.hokago_memories.domain.dto.TierDto;
+import com.hokago_memories.dto.PlayRecordDto;
 import com.hokago_memories.exception.ErrorMessage;
 import com.hokago_memories.exception.TierNotFoundException;
 import com.hokago_memories.exception.UserNotFoundException;
+import com.hokago_memories.infrastructure.api.NetworkClient;
+import com.hokago_memories.infrastructure.parser.JsonParser;
 import com.hokago_memories.service.OpenApiService;
-import com.hokago_memories.util.Constants;
-import com.hokago_memories.util.NetworkClient;
-import com.hokago_memories.util.parser.JsonParser;
+import com.hokago_memories.service.impl.dto.BoardDto;
+import com.hokago_memories.service.impl.dto.FloorDto;
+import com.hokago_memories.service.impl.dto.PatternDto;
+import com.hokago_memories.service.impl.dto.TierDto;
 import java.util.List;
 import java.util.stream.Stream;
 

@@ -2,7 +2,7 @@ package com.hokago_memories.controller;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.domain.UserRequest;
+import com.hokago_memories.dto.UserRequest;
 import com.hokago_memories.exception.TierNotFoundException;
 import com.hokago_memories.exception.UserNotFoundException;
 import com.hokago_memories.service.PlayerInfoService;
@@ -33,7 +33,7 @@ public class CliController {
             Tier tier = playerInfoService.getUserTier(request);
             DjClass djClass = playerInfoService.getDjClass(request);
             outputView.printTierAndDjClass(request, tier, djClass);
-            
+
         } catch (Exception e) {
             outputView.printError(e.getMessage());
         }

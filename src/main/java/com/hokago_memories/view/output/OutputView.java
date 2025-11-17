@@ -2,7 +2,7 @@ package com.hokago_memories.view.output;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.domain.UserRequest;
+import com.hokago_memories.dto.UserRequest;
 
 public class OutputView {
 

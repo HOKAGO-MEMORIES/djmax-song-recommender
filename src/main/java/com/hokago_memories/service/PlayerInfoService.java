@@ -1,9 +1,10 @@
 package com.hokago_memories.service;
 
 import com.hokago_memories.domain.DjClass;
-import com.hokago_memories.domain.PlayRecordDto;
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.domain.UserRequest;
+import com.hokago_memories.domain.logic.DjClassCalculator;
+import com.hokago_memories.dto.PlayRecordDto;
+import com.hokago_memories.dto.UserRequest;
 import java.util.List;
 
 public class PlayerInfoService {

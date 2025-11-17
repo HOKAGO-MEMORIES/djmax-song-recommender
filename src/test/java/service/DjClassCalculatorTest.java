@@ -1,9 +1,9 @@
 package service;
 
 import com.hokago_memories.domain.DjClass;
-import com.hokago_memories.domain.PlayRecordDto;
-import com.hokago_memories.domain.TheoreticalMax;
-import com.hokago_memories.service.DjClassCalculator;
+import com.hokago_memories.domain.logic.DjClassCalculator;
+import com.hokago_memories.dto.PlayRecordDto;
+import com.hokago_memories.dto.TheoreticalMax;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

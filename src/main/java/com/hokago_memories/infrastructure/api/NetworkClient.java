@@ -1,4 +1,4 @@
-package com.hokago_memories.util;
+package com.hokago_memories.infrastructure.api;
 
 import java.net.URI;
 import java.net.http.HttpClient;

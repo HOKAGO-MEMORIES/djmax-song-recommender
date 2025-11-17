@@ -1,4 +1,4 @@
-package com.hokago_memories.util;
+package com.hokago_memories.config;
 
 import java.util.List;
 

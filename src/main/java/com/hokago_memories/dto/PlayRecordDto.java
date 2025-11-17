@@ -1,6 +1,6 @@
-package com.hokago_memories.domain.dto;
+package com.hokago_memories.dto;
 
-public record PatternDto(
+public record PlayRecordDto(
         Integer title,
         String dlcCode,
         String pattern,

@@ -1,16 +1,16 @@
 package com.hokago_memories.config;
 
 import com.hokago_memories.controller.CliController;
+import com.hokago_memories.domain.logic.DjClassCalculator;
+import com.hokago_memories.domain.logic.DjPowerRules;
+import com.hokago_memories.domain.logic.TheoreticalMaxCalculator;
+import com.hokago_memories.infrastructure.api.NetworkClient;
 import com.hokago_memories.repository.SongRepository;
 import com.hokago_memories.repository.impl.JpaSongRepository;
-import com.hokago_memories.service.DjClassCalculator;
-import com.hokago_memories.service.DjPowerRules;
 import com.hokago_memories.service.OpenApiService;
 import com.hokago_memories.service.PlayerInfoService;
 import com.hokago_memories.service.SongDataInitializerService;
-import com.hokago_memories.service.TheoreticalMaxCalculator;
 import com.hokago_memories.service.impl.ProductionOpenApiService;
-import com.hokago_memories.util.NetworkClient;
 import com.hokago_memories.view.input.InputView;
 import com.hokago_memories.view.output.OutputView;
 import jakarta.persistence.EntityManager;

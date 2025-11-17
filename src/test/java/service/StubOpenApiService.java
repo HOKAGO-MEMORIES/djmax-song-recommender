@@ -1,7 +1,7 @@
 package service;
 
-import com.hokago_memories.domain.PlayRecordDto;
 import com.hokago_memories.domain.Tier;
+import com.hokago_memories.dto.PlayRecordDto;
 import com.hokago_memories.service.OpenApiService;
 import java.util.List;
 

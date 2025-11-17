@@ -1,7 +1,7 @@
 package util;
 
 import com.hokago_memories.domain.song.Song;
-import com.hokago_memories.util.parser.JsonParser;
+import com.hokago_memories.infrastructure.parser.JsonParser;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

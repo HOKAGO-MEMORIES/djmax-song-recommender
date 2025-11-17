@@ -1,9 +1,9 @@
 package com.hokago_memories.service;
 
 import com.hokago_memories.domain.song.Song;
+import com.hokago_memories.infrastructure.api.NetworkClient;
+import com.hokago_memories.infrastructure.parser.JsonParser;
 import com.hokago_memories.repository.SongRepository;
-import com.hokago_memories.util.NetworkClient;
-import com.hokago_memories.util.parser.JsonParser;
 import java.util.List;
 
 public class SongDataInitializerService {

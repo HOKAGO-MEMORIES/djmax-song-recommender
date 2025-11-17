@@ -1,4 +1,4 @@
-package com.hokago_memories.service;
+package com.hokago_memories.domain.logic;
 
 import java.util.Map;
 

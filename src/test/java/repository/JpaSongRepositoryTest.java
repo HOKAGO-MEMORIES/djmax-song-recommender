@@ -1,8 +1,8 @@
 package repository;
 
 import com.hokago_memories.domain.song.Song;
+import com.hokago_memories.infrastructure.parser.JsonParser;
 import com.hokago_memories.repository.impl.JpaSongRepository;
-import com.hokago_memories.util.parser.JsonParser;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

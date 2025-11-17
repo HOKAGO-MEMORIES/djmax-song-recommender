@@ -1,11 +1,10 @@
-package com.hokago_memories.service;
+package com.hokago_memories.domain.logic;
 
-import com.hokago_memories.domain.TheoreticalMax;
 import com.hokago_memories.domain.song.PatternButton;
 import com.hokago_memories.domain.song.PatternDifficulty;
 import com.hokago_memories.domain.song.Song;
+import com.hokago_memories.dto.TheoreticalMax;
 import com.hokago_memories.repository.SongRepository;
-import com.hokago_memories.util.SongClassifier;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -95,7 +94,7 @@ public class TheoreticalMaxCalculator {
         if (maxPower <= 0) {
             return;
         }
-        
+
         boolean isNew = SongClassifier.isNewCategory(song);
         if (isNew) {
             newPools.get(buttonKey).add(maxPower);

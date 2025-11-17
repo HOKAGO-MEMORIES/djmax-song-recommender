@@ -1,11 +1,9 @@
-package com.hokago_memories.service;
+package com.hokago_memories.domain.logic;
 
 import com.hokago_memories.domain.DjClass;
-import com.hokago_memories.domain.PlayRecordDto;
-import com.hokago_memories.domain.TheoreticalMax;
-import com.hokago_memories.domain.TopRecords;
-import com.hokago_memories.util.SongClassifier;
-import com.hokago_memories.util.SongPartitioner;
+import com.hokago_memories.dto.PlayRecordDto;
+import com.hokago_memories.dto.TheoreticalMax;
+import com.hokago_memories.dto.TopRecords;
 import java.util.List;
 
 public class DjClassCalculator {

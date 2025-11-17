@@ -1,4 +1,4 @@
-package com.hokago_memories.domain;
+package com.hokago_memories.dto;
 
 import java.util.List;
 

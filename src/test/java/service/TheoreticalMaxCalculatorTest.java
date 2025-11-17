@@ -1,9 +1,9 @@
 package service;
 
-import com.hokago_memories.domain.TheoreticalMax;
+import com.hokago_memories.domain.logic.DjPowerRules;
+import com.hokago_memories.domain.logic.TheoreticalMaxCalculator;
+import com.hokago_memories.dto.TheoreticalMax;
 import com.hokago_memories.repository.SongRepository;
-import com.hokago_memories.service.DjPowerRules;
-import com.hokago_memories.service.TheoreticalMaxCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
