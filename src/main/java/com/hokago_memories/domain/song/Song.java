@@ -2,19 +2,20 @@ package com.hokago_memories.domain.song;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.hokago_memories.domain.Categorizable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Song {
+public class Song implements Categorizable {
 
     @Id
-    int title;
-    String name;
-    String composer;
-    String dlcCode;
-    String dlc;
+    private Integer title;
+    private String name;
+    private String composer;
+    private String dlcCode;
+    private String dlc;
 
     @Embedded
     Patterns patterns;
@@ -24,7 +25,7 @@ public class Song {
 
     @JsonCreator
     public Song(
-            @JsonProperty("title") int title,
+            @JsonProperty("title") Integer title,
             @JsonProperty("name") String name,
             @JsonProperty("composer") String composer,
             @JsonProperty("dlcCode") String dlcCode,
@@ -38,7 +39,8 @@ public class Song {
         this.patterns = patterns;
     }
 
-    public int title() {
+    @Override
+    public Integer title() {
         return title;
     }
 
@@ -50,6 +52,7 @@ public class Song {
         return composer;
     }
 
+    @Override
     public String dlcCode() {
         return dlcCode;
     }
