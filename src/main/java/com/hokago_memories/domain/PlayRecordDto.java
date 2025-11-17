@@ -1,9 +1,9 @@
 package com.hokago_memories.domain;
 
 public record PlayRecordDto(
-        int title,
+        Integer title,
         String dlcCode,
         String pattern,
-        double djpower
+        Double djpower
 ) {
 }
