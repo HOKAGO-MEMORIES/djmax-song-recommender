@@ -3,6 +3,8 @@ package com.hokago_memories.service.impl;
 import com.hokago_memories.domain.PlayRecordDto;
 import com.hokago_memories.domain.Tier;
 import com.hokago_memories.domain.dto.BoardDto;
+import com.hokago_memories.domain.dto.FloorDto;
+import com.hokago_memories.domain.dto.PatternDto;
 import com.hokago_memories.domain.dto.TierDto;
 import com.hokago_memories.exception.ErrorMessage;
 import com.hokago_memories.exception.TierNotFoundException;
@@ -53,16 +55,32 @@ public class ProductionOpenApiService implements OpenApiService {
                     String url = String.format("%s/%s/board/%d/%s", API_BASE_URL, nickname, button, boardName);
                     String jsonResponse = networkClient.get(url);
 
-                    if (!jsonResponse.contains("\"success\": true")) {
+                    if (!jsonResponse.contains("\"success\":true")) {
                         return Stream.<PlayRecordDto>empty();
                     }
 
-                    BoardDto boardDto = JsonParser.parse(jsonResponse, BoardDto.class);
+                    try {
+                        BoardDto boardDto = JsonParser.parse(jsonResponse, BoardDto.class);
 
-                    return boardDto.floors().stream()
-                            .flatMap(floor -> floor.patterns().stream()
-                                    .map(p -> new PlayRecordDto(p.title(), p.dlcCode(), p.pattern(), p.djpower()))
-                            );
+                        List<FloorDto> floors = boardDto.floors();
+                        if (floors == null) {
+                            return Stream.<PlayRecordDto>empty();
+                        }
+
+                        return floors.stream()
+                                .flatMap(floor -> {
+                                    List<PatternDto> patterns = floor.patterns();
+                                    if (patterns == null) {
+                                        return Stream.<PlayRecordDto>empty();
+                                    }
+                                    return patterns.stream()
+                                            .filter(p -> p.djpower() != null && p.djpower() > 0)
+                                            .map(p -> new PlayRecordDto(p.title(), p.dlcCode(), p.pattern(),
+                                                    p.djpower()));
+                                });
+                    } catch (Exception e) {
+                        return Stream.<PlayRecordDto>empty();
+                    }
                 })
                 .toList();
     }
