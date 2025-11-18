@@ -76,7 +76,7 @@ public class ProductionOpenApiService implements OpenApiService {
                                     return patterns.stream()
                                             .filter(p -> p.djpower() != null && p.djpower() > 0)
                                             .map(p -> new PlayRecordDto(p.title(), p.dlcCode(), p.pattern(),
-                                                    p.djpower()));
+                                                    p.score(), p.djpower()));
                                 });
                     } catch (Exception e) {
                         return Stream.<PlayRecordDto>empty();

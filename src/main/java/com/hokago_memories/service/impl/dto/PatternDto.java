@@ -4,6 +4,7 @@ public record PatternDto(
         Integer title,
         String dlcCode,
         String pattern,
+        Double score,
         Double djpower
 ) {
 }
