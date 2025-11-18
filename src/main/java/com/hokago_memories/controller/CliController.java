@@ -2,6 +2,7 @@ package com.hokago_memories.controller;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
+import com.hokago_memories.dto.PlayRecordDto;
 import com.hokago_memories.dto.UserRequest;
 import com.hokago_memories.exception.TierNotFoundException;
 import com.hokago_memories.exception.UserNotFoundException;
@@ -31,7 +32,8 @@ public class CliController {
         try {
             UserRequest request = getUserInfo();
             Tier tier = playerInfoService.getUserTier(request);
-            DjClass djClass = playerInfoService.getDjClass(request);
+            List<PlayRecordDto> records = playerInfoService.getRawRecords(request);
+            DjClass djClass = playerInfoService.getDjClass(records, request.button());
             outputView.printTierAndDjClass(request, tier, djClass);
 
         } catch (Exception e) {
@@ -52,7 +54,7 @@ public class CliController {
                         StringParser.ParseStringToInt(inputs.getLast()));
 
                 // API 존재 검증
-                playerInfoService.getUserTier(request);
+                playerInfoService.validateUserExists(request);
 
                 return request;
 

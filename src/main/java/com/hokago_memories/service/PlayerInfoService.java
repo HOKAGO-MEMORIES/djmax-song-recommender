@@ -17,12 +17,19 @@ public class PlayerInfoService {
         this.djClassCalculator = djClassCalculator;
     }
 
+    public List<PlayRecordDto> getRawRecords(UserRequest request) {
+        return openApiService.findDjClassBoard(request.nickname(), request.button());
+    }
+
     public Tier getUserTier(UserRequest request) {
         return openApiService.findTier(request.nickname(), request.button());
     }
 
-    public DjClass getDjClass(UserRequest request) {
-        List<PlayRecordDto> records = openApiService.findDjClassBoard(request.nickname(), request.button());
-        return djClassCalculator.calculate(records, request.button());
+    public DjClass getDjClass(List<PlayRecordDto> records, int button) {
+        return djClassCalculator.calculate(records, button);
+    }
+
+    public void validateUserExists(UserRequest request) {
+        openApiService.findTier(request.nickname(), request.button());
     }
 }
