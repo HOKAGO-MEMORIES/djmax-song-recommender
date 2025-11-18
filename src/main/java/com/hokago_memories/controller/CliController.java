@@ -2,11 +2,14 @@ package com.hokago_memories.controller;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
+import com.hokago_memories.dto.ImprovementRecommendation;
+import com.hokago_memories.dto.NewSongRecommendation;
 import com.hokago_memories.dto.PlayRecordDto;
 import com.hokago_memories.dto.UserRequest;
 import com.hokago_memories.exception.TierNotFoundException;
 import com.hokago_memories.exception.UserNotFoundException;
 import com.hokago_memories.service.PlayerInfoService;
+import com.hokago_memories.service.RecommendationService;
 import com.hokago_memories.util.Splitter;
 import com.hokago_memories.util.parser.StringParser;
 import com.hokago_memories.view.input.InputValidator;
@@ -18,12 +21,15 @@ import org.hibernate.boot.model.naming.IllegalIdentifierException;
 public class CliController {
 
     private final PlayerInfoService playerInfoService;
+    private final RecommendationService recommendationService;
     private final InputView inputView;
     private final OutputView outputView;
 
 
-    public CliController(PlayerInfoService playerInfoService, InputView inputView, OutputView outputVIew) {
+    public CliController(PlayerInfoService playerInfoService, RecommendationService recommendationService,
+                         InputView inputView, OutputView outputVIew) {
         this.playerInfoService = playerInfoService;
+        this.recommendationService = recommendationService;
         this.inputView = inputView;
         this.outputView = outputVIew;
     }
@@ -36,6 +42,9 @@ public class CliController {
             DjClass djClass = playerInfoService.getDjClass(records, request.button());
             outputView.printTierAndDjClass(request, tier, djClass);
 
+            List<ImprovementRecommendation> recommendations = recommendationService.recommendImprovements(request);
+            List<NewSongRecommendation> newSongRecommendations = recommendationService.recommendNewSongs(request);
+            outputView.printRecommendations(recommendations, newSongRecommendations);
         } catch (Exception e) {
             outputView.printError(e.getMessage());
         }
