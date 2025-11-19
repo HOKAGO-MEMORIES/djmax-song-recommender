@@ -6,6 +6,7 @@ public record PlayRecordDto(
         Integer title,
         String dlcCode,
         String pattern,
+        Double scFloor,
         Double score,
         Double djpower
 ) implements Categorizable {

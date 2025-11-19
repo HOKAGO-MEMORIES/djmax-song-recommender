@@ -63,12 +63,12 @@ public class RecommendationService {
 
             double currentScore = record.score();
 
-            if (currentScore > 99.0 || record.djpower() <= 0) {
+            if (record.djpower() <= 0) {
                 continue;
             }
 
-            // 현재 점수 + 1.0% (최대 99.5%)
-            double targetScore = Math.min(currentScore + 1.0, 99.5);
+            // 현재 점수 + 1.0% (최대 100.0%)
+            double targetScore = Math.min(currentScore + 1.0, 100.0);
             double expectedPower = djPowerCalculator.calculate(record.pattern(), level, targetScore);
             double increase = expectedPower - record.djpower();
 
@@ -99,6 +99,14 @@ public class RecommendationService {
                 currentRecords, SongClassifier::isNewCategory, PlayRecordDto::djpower
         );
 
+        List<PlayRecordDto> top50 = topRecords.topBasic().stream().limit(50).toList();
+
+        double averageFloor = top50.stream()
+                .filter(r -> r.scFloor() != null)
+                .mapToDouble(PlayRecordDto::scFloor)
+                .average()
+                .orElse(0.0);
+
         double basicCutoff = getLowestScore(topRecords.topBasic(), 70);
         double newCutoff = getLowestScore(topRecords.topNew(), 30);
 
@@ -108,6 +116,15 @@ public class RecommendationService {
 
         for (Song song : allSongs) {
             if (playedTitles.contains(song.title())) {
+                continue;
+            }
+
+            int button = request.button();
+            double songMaxFloor = getSongMaxFloor(song, button);
+
+            System.out.println(songMaxFloor + " " + averageFloor);
+            // 평균 층수에서 + 1.5층 이상 벗어나는 곡 제외
+            if (songMaxFloor > averageFloor + 5.0 || songMaxFloor < averageFloor - 5.0) {
                 continue;
             }
 
@@ -181,5 +198,31 @@ public class RecommendationService {
             default -> null;
         };
         return pat != null ? pat.level() : 0;
+    }
+
+    private double getSongMaxFloor(Song song, int button) {
+        PatternButton patternButton = switch (button) {
+            case 4 -> song.patterns().b4();
+            case 5 -> song.patterns().b5();
+            case 6 -> song.patterns().b6();
+            case 8 -> song.patterns().b8();
+            default -> null;
+        };
+
+        if (patternButton == null) {
+            return 0.0;
+        }
+
+        double maxFloor = 0.0;
+
+        if (patternButton.SC() != null && patternButton.SC().floor() != null) {
+            maxFloor = Math.max(maxFloor, patternButton.SC().floor());
+        }
+
+        if (patternButton.MX() != null && patternButton.MX().floor() != null) {
+            maxFloor = Math.max(maxFloor, patternButton.MX().floor());
+        }
+
+        return maxFloor;
     }
 }
