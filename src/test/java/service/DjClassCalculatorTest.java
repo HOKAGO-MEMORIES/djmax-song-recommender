@@ -1,9 +1,9 @@
 package service;
 
 import com.hokago_memories.domain.DjClass;
-import com.hokago_memories.domain.logic.DjClassCalculator;
-import com.hokago_memories.dto.PlayRecordDto;
-import com.hokago_memories.dto.TheoreticalMax;
+import com.hokago_memories.domain.calculator.DjClassCalculator;
+import com.hokago_memories.dto.internal.PlayRecordDto;
+import com.hokago_memories.dto.internal.TheoreticalMax;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,9 +24,9 @@ public class DjClassCalculatorTest {
     @Test
     void calculate_with_sampleList() {
         List<PlayRecordDto> records = List.of(
-                new PlayRecordDto(179, "VE", "MX", 57.6108),
-                new PlayRecordDto(631, "VL", "HD", 60.8395),
-                new PlayRecordDto(738, "ARC", "MX", 62.2297)
+                new PlayRecordDto(179, "VE", "MX", 0.0, 0.0, 57.6108),
+                new PlayRecordDto(631, "VL", "HD", 0.0, 0.0, 60.8395),
+                new PlayRecordDto(738, "ARC", "MX", 0.0, 0.0, 62.2297)
         );
 
         DjClass result = calculator.calculate(records, 4);

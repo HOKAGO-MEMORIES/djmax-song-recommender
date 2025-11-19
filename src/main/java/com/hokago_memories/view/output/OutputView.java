@@ -2,9 +2,9 @@ package com.hokago_memories.view.output;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.dto.ImprovementRecommendation;
-import com.hokago_memories.dto.NewSongRecommendation;
-import com.hokago_memories.dto.UserRequest;
+import com.hokago_memories.dto.request.UserRequest;
+import com.hokago_memories.dto.response.ImprovementRecommendation;
+import com.hokago_memories.dto.response.NewSongRecommendation;
 import java.util.List;
 
 public class OutputView {

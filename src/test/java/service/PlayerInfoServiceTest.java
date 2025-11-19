@@ -2,11 +2,11 @@ package service;
 
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.DjClassGrade;
-import com.hokago_memories.domain.logic.DjClassCalculator;
-import com.hokago_memories.dto.TheoreticalMax;
-import com.hokago_memories.dto.UserRequest;
-import com.hokago_memories.service.OpenApiService;
+import com.hokago_memories.domain.calculator.DjClassCalculator;
+import com.hokago_memories.dto.internal.TheoreticalMax;
+import com.hokago_memories.dto.request.UserRequest;
 import com.hokago_memories.service.PlayerInfoService;
+import com.hokago_memories.service.api.OpenApiService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -55,7 +55,7 @@ public class PlayerInfoServiceTest {
     @Test
     void findDjClass() {
         UserRequest request = new UserRequest("ValidNickname", 4);
-        DjClass djClass = service.getDjClass(request);
+        DjClass djClass = service.getDjClass(service.getRawRecords(request), 4);
 
         // 661.163
         // 1040.7314

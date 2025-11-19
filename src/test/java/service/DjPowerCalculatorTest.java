@@ -2,8 +2,8 @@ package service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.within;
 
-import com.hokago_memories.domain.logic.DjPowerCalculator;
-import com.hokago_memories.domain.logic.DjPowerRules;
+import com.hokago_memories.domain.calculator.DjPowerCalculator;
+import com.hokago_memories.domain.rule.DjPowerRules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

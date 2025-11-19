@@ -2,7 +2,7 @@ package com.hokago_memories.domain.song;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hokago_memories.domain.Categorizable;
+import com.hokago_memories.domain.util.Categorizable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

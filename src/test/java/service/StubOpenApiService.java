@@ -1,8 +1,8 @@
 package service;
 
 import com.hokago_memories.domain.Tier;
-import com.hokago_memories.dto.PlayRecordDto;
-import com.hokago_memories.service.OpenApiService;
+import com.hokago_memories.dto.internal.PlayRecordDto;
+import com.hokago_memories.service.api.OpenApiService;
 import java.util.List;
 
 public class StubOpenApiService implements OpenApiService {
@@ -22,10 +22,10 @@ public class StubOpenApiService implements OpenApiService {
 
     @Override
     public List<PlayRecordDto> findDjClassBoard(String nickname, int button) {
-        PlayRecordDto song1 = new PlayRecordDto(729, "PLI2", "SC", 330.5815);
-        PlayRecordDto song2 = new PlayRecordDto(716, "VL3", "SC", 330.5815);
-        PlayRecordDto song3 = new PlayRecordDto(484, "TQ", "SC", 500.3644);
-        PlayRecordDto song4 = new PlayRecordDto(550, "VE4", "SC", 540.367);
+        PlayRecordDto song1 = new PlayRecordDto(729, "PLI2", "SC", 0.0, 0.0, 330.5815);
+        PlayRecordDto song2 = new PlayRecordDto(716, "VL3", "SC", 0.0, 0.0, 330.5815);
+        PlayRecordDto song3 = new PlayRecordDto(484, "TQ", "SC", 0.0, 0.0, 500.3644);
+        PlayRecordDto song4 = new PlayRecordDto(550, "VE4", "SC", 0.0, 0.0, 540.367);
         return List.of(song1, song2, song3, song4);
     }
 }
