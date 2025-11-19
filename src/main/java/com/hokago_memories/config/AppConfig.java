@@ -4,6 +4,7 @@ import com.hokago_memories.controller.CliController;
 import com.hokago_memories.domain.logic.DjClassCalculator;
 import com.hokago_memories.domain.logic.DjPowerCalculator;
 import com.hokago_memories.domain.logic.DjPowerRules;
+import com.hokago_memories.domain.logic.PatternAnalyzer;
 import com.hokago_memories.domain.logic.TargetAccuracyCalculator;
 import com.hokago_memories.domain.logic.TheoreticalMaxCalculator;
 import com.hokago_memories.infrastructure.api.NetworkClient;
@@ -14,6 +15,8 @@ import com.hokago_memories.service.PlayerInfoService;
 import com.hokago_memories.service.RecommendationService;
 import com.hokago_memories.service.SongDataInitializerService;
 import com.hokago_memories.service.impl.ProductionOpenApiService;
+import com.hokago_memories.service.recommender.ImprovementRecommender;
+import com.hokago_memories.service.recommender.NewSongRecommender;
 import com.hokago_memories.view.input.InputView;
 import com.hokago_memories.view.output.OutputView;
 import jakarta.persistence.EntityManager;
@@ -31,8 +34,11 @@ public class AppConfig {
     }
 
     public RecommendationService recommendationService() {
-        return new RecommendationService(playerInfoService(), songRepository(), djPowerCalculator(),
-                targetAccuracyCalculator());
+        return new RecommendationService(
+                improvementRecommender(),
+                newSongRecommender(),
+                playerInfoService()
+        );
     }
 
     public SongDataInitializerService songDataInitializerService() {
@@ -65,6 +71,18 @@ public class AppConfig {
 
     private TheoreticalMaxCalculator theoreticalMaxCalculator() {
         return new TheoreticalMaxCalculator(songRepository(), djPowerRules());
+    }
+
+    private ImprovementRecommender improvementRecommender() {
+        return new ImprovementRecommender(songRepository(), djPowerCalculator());
+    }
+
+    private NewSongRecommender newSongRecommender() {
+        return new NewSongRecommender(songRepository(), patternAnalyzer());
+    }
+
+    private PatternAnalyzer patternAnalyzer() {
+        return new PatternAnalyzer(djPowerCalculator(), targetAccuracyCalculator());
     }
 
     private DjPowerRules djPowerRules() {
