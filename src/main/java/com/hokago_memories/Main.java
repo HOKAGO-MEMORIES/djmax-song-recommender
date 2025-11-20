@@ -27,6 +27,6 @@ public class Main {
         if (portEnv != null && !portEnv.isEmpty()) {
             return Integer.parseInt(portEnv);
         }
-        return 8080;
+        return 3939;
     }
 }
