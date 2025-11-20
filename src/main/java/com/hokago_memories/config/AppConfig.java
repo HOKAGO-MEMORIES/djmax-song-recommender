@@ -1,6 +1,7 @@
 package com.hokago_memories.config;
 
 import com.hokago_memories.controller.CliController;
+import com.hokago_memories.controller.WebController;
 import com.hokago_memories.domain.calculator.DjClassCalculator;
 import com.hokago_memories.domain.calculator.DjPowerCalculator;
 import com.hokago_memories.domain.calculator.TargetAccuracyCalculator;
@@ -22,11 +23,17 @@ import com.hokago_memories.view.output.OutputView;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppConfig {
 
     public CliController cliController() {
         return new CliController(playerInfoService(), recommendationService(), inputView(), outputVIew());
+    }
+
+    public WebController webController() {
+        return new WebController(playerInfoService(), recommendationService());
     }
 
     public PlayerInfoService playerInfoService() {
@@ -94,7 +101,29 @@ public class AppConfig {
     }
 
     private EntityManager entityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("v-archive-project");
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String dbUser = System.getenv("JDBC_DATABASE_USERNAME");
+        String dbPassword = System.getenv("JDBC_DATABASE_PASSWORD");
+
+        Map<String, String> properties = new HashMap<>();
+
+        if (dbUrl != null && !dbUrl.isEmpty()) {
+            properties.put("jakarta.persistence.jdbc.driver", "org.postgresql.Driver");
+            properties.put("jakarta.persistence.jdbc.url", dbUrl);
+            properties.put("jakarta.persistence.jdbc.user", dbUser);
+            properties.put("jakarta.persistence.jdbc.password", dbPassword);
+            properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            properties.put("hibernate.hbm2ddl.auto", "update");
+        } else {
+            // 로컬 테스트용 (기존 H2 설정 유지)
+            properties.put("jakarta.persistence.jdbc.driver", "org.h2.Driver");
+            properties.put("jakarta.persistence.jdbc.url", "jdbc:h2:file:./v-archive-db");
+            properties.put("jakarta.persistence.jdbc.user", "user");
+            properties.put("jakarta.persistence.jdbc.password", "");
+            properties.put("hibernate.hbm2ddl.auto", "update");
+        }
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("v-archive-project", properties);
         return emf.createEntityManager();
     }
 
