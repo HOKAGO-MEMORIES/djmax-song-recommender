@@ -96,50 +96,65 @@ public class AppConfig {
         return new DjPowerRules();
     }
 
+    private NetworkClient networkClient() {
+        return new NetworkClient();
+    }
+
     private SongRepository songRepository() {
         return new JpaSongRepository(entityManager());
     }
 
     private EntityManager entityManager() {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
-        String dbUser = System.getenv("JDBC_DATABASE_USERNAME");
-        String dbPassword = System.getenv("JDBC_DATABASE_PASSWORD");
 
         Map<String, String> properties = new HashMap<>();
 
         if (dbUrl != null && !dbUrl.isEmpty()) {
-            if (dbUrl.startsWith("postgres://")) {
-                dbUrl = dbUrl.replace("postgres://", "jdbc:postgresql://");
-            } else if (dbUrl.startsWith("postgresql://")) {
-                dbUrl = dbUrl.replace("postgresql://", "jdbc:postgresql://");
-            }
-
-            properties.put("jakarta.persistence.jdbc.driver", "org.postgresql.Driver");
-            properties.put("jakarta.persistence.jdbc.url", dbUrl);
-
-            if (dbUser != null && !dbUser.isEmpty()) {
-                properties.put("jakarta.persistence.jdbc.user", dbUser);
-            }
-            if (dbPassword != null && !dbPassword.isEmpty()) {
-                properties.put("jakarta.persistence.jdbc.password", dbPassword);
-            }
-
-            properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-            properties.put("hibernate.hbm2ddl.auto", "update");
+            configureRenderPostgres(properties, dbUrl);
         } else {
             // 로컬 테스트용 (H2 데이터베이스)
-            properties.put("jakarta.persistence.jdbc.driver", "org.h2.Driver");
-            properties.put("jakarta.persistence.jdbc.url", "jdbc:h2:file:./v-archive-db");
-            properties.put("jakarta.persistence.jdbc.user", "user");
-            properties.put("jakarta.persistence.jdbc.password", "");
-            properties.put("hibernate.hbm2ddl.auto", "update");
+            configureLocalH2(properties);
         }
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("v-archive-project", properties);
         return emf.createEntityManager();
     }
 
-    private NetworkClient networkClient() {
-        return new NetworkClient();
+    private void configureRenderPostgres(Map<String, String> properties, String rawUrl) {
+        try {
+            String cleanUrl = rawUrl.replace("postgres://", "").replace("postgresql://", "");
+
+            // '@' 기준으로 계정정보 / 주소 분리
+            int atIndex = cleanUrl.lastIndexOf("@");
+            String userPass = cleanUrl.substring(0, atIndex);
+            String hostPath = cleanUrl.substring(atIndex + 1);
+
+            // ':' 기준으로 아이디 / 비밀번호 분리
+            int colonIndex = userPass.indexOf(":");
+            String username = userPass.substring(0, colonIndex);
+            String password = userPass.substring(colonIndex + 1);
+
+            String jdbcUrl = "jdbc:postgresql://" + hostPath;
+
+            properties.put("jakarta.persistence.jdbc.driver", "org.postgresql.Driver");
+            properties.put("jakarta.persistence.jdbc.url", jdbcUrl);
+            properties.put("jakarta.persistence.jdbc.user", username);
+            properties.put("jakarta.persistence.jdbc.password", password);
+
+            properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            properties.put("hibernate.hbm2ddl.auto", "update");
+
+        } catch (Exception e) {
+            throw new RuntimeException("Render DB URL 파싱 중 오류 발생: " + rawUrl, e);
+        }
+    }
+
+    private void configureLocalH2(Map<String, String> properties) {
+        properties.put("jakarta.persistence.jdbc.driver", "org.h2.Driver");
+        properties.put("jakarta.persistence.jdbc.url", "jdbc:h2:file:./v-archive-db");
+        properties.put("jakarta.persistence.jdbc.user", "user");
+        properties.put("jakarta.persistence.jdbc.password", "");
+
+        properties.put("hibernate.hbm2ddl.auto", "update");
     }
 }
