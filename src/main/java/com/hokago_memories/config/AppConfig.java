@@ -108,14 +108,26 @@ public class AppConfig {
         Map<String, String> properties = new HashMap<>();
 
         if (dbUrl != null && !dbUrl.isEmpty()) {
+            if (dbUrl.startsWith("postgres://")) {
+                dbUrl = dbUrl.replace("postgres://", "jdbc:postgresql://");
+            } else if (dbUrl.startsWith("postgresql://")) {
+                dbUrl = dbUrl.replace("postgresql://", "jdbc:postgresql://");
+            }
+
             properties.put("jakarta.persistence.jdbc.driver", "org.postgresql.Driver");
             properties.put("jakarta.persistence.jdbc.url", dbUrl);
-            properties.put("jakarta.persistence.jdbc.user", dbUser);
-            properties.put("jakarta.persistence.jdbc.password", dbPassword);
+
+            if (dbUser != null && !dbUser.isEmpty()) {
+                properties.put("jakarta.persistence.jdbc.user", dbUser);
+            }
+            if (dbPassword != null && !dbPassword.isEmpty()) {
+                properties.put("jakarta.persistence.jdbc.password", dbPassword);
+            }
+
             properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
             properties.put("hibernate.hbm2ddl.auto", "update");
         } else {
-            // 로컬 테스트용 (기존 H2 설정 유지)
+            // 로컬 테스트용 (H2 데이터베이스)
             properties.put("jakarta.persistence.jdbc.driver", "org.h2.Driver");
             properties.put("jakarta.persistence.jdbc.url", "jdbc:h2:file:./v-archive-db");
             properties.put("jakarta.persistence.jdbc.user", "user");
