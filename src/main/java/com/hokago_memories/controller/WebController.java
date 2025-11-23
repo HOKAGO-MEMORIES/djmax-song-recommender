@@ -1,5 +1,6 @@
 package com.hokago_memories.controller;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
 import com.hokago_memories.dto.internal.PlayRecordDto;
@@ -11,6 +12,7 @@ import com.hokago_memories.service.recommendation.RecommendationService;
 import com.hokago_memories.util.parser.StringParser;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+import io.javalin.json.JavalinJackson;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,14 @@ public class WebController {
 
     public void start(int port) {
         Javalin app = Javalin.create(config -> {
-            // CORS 허용
+
+            // ObjectMapper 설정
+            config.jsonMapper(new JavalinJackson().updateMapper(mapper -> {
+                mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+                mapper.disable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
+            }));
+
+            // 2. CORS 설정 (Javalin 6.x 방식)
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> {
                     it.anyHost();
