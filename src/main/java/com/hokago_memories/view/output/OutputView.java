@@ -1,6 +1,5 @@
 package com.hokago_memories.view.output;
 
-import com.hokago_memories.domain.DjClass;
 import com.hokago_memories.domain.Tier;
 import com.hokago_memories.dto.request.UserRequest;
 import com.hokago_memories.dto.response.ImprovementRecommendation;
@@ -15,10 +14,10 @@ public class OutputView {
         );
     }
 
-    public void printTierAndDjClass(UserRequest request, Tier tier, DjClass djClass) {
+    public void printTierAndDjClass(UserRequest request, Tier tier, String gradeName) {
         System.out.println(
                 OutputMessage.TIER_AND_DJCLASS.getOutputMessage(request.nickname(), request.button(), tier.tierName(),
-                        djClass.getGrade().getDisplayName())
+                        gradeName)
         );
     }
 

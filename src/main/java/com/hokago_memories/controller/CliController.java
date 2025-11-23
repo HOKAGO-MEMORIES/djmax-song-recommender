@@ -40,7 +40,7 @@ public class CliController {
             Tier tier = playerInfoService.getUserTier(request);
             List<PlayRecordDto> records = playerInfoService.getRawRecords(request);
             DjClass djClass = playerInfoService.getDjClass(records, request.button());
-            outputView.printTierAndDjClass(request, tier, djClass);
+            outputView.printTierAndDjClass(request, tier, djClass.getGradeName());
 
             List<ImprovementRecommendation> recommendations = recommendationService.recommendImprovements(request);
             List<NewSongRecommendation> newSongRecommendations = recommendationService.recommendNewSongs(request);
